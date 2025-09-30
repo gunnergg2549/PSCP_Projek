@@ -1,1 +1,1 @@
-This is a project about making game to learn about python basic
+This is a project about making game to let player learn about python basic
