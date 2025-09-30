@@ -1,0 +1,20 @@
+29/9/68
+
+UI:
+Main menu: can exit, can play ,no option
+Pause Menu: can resume, no option, can exit, no return to main menu
+
+Gameplay:
+Player: can walk, can jump but static, can flip left,right
+
+30/9/68
+UI:
+Main menu: can exit, can play ,have option but WIP
+Pause Menu: can resume, no option, can exit, no return to main menu **still bug**
+
+Gameplay:
+Player: can walk, can jump with physic can double jump no bug, can flip left, right
+
+					
+
+				Need Sprite Very Much JUBJUB
