@@ -1,0 +1,132 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scene/code_sys/main_menu.py" type="Script" id=1]
+[ext_resource path="res://assets/gamename/1_new.png" type="Texture" id=2]
+[ext_resource path="res://assets/gamename/case_new.png" type="Texture" id=3]
+[ext_resource path="res://assets/gamename/test_new.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=15]
+font_path = "res://assets/ALGER.TTF"
+
+[sub_resource type="DynamicFont" id=16]
+size = 56
+font_data = SubResource( 15 )
+
+[sub_resource type="DynamicFontData" id=17]
+font_path = "res://assets/ALGER.TTF"
+
+[sub_resource type="DynamicFont" id=18]
+size = 33
+font_data = SubResource( 17 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/ALGER.TTF"
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+font_data = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://assets/ALGER.TTF"
+
+[sub_resource type="DynamicFont" id=11]
+size = 34
+font_data = SubResource( 8 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.54902, 0.54902, 0.54902, 1 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://assets/ALGER.TTF"
+
+[sub_resource type="DynamicFont" id=13]
+size = 41
+font_data = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.54902, 0.54902, 0.54902, 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 513, 299 )
+
+[node name="Case" type="Sprite" parent="."]
+position = Vector2( 513, 191 )
+scale = Vector2( 0.66738, 0.680147 )
+texture = ExtResource( 3 )
+
+[node name="1" type="Sprite" parent="."]
+position = Vector2( 656, 117 )
+scale = Vector2( 0.733749, 0.522183 )
+texture = ExtResource( 2 )
+
+[node name="Test" type="Sprite" parent="."]
+position = Vector2( 510, 89 )
+scale = Vector2( 0.91311, 0.88763 )
+texture = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 294.0
+margin_top = 259.0
+margin_right = 776.0
+margin_bottom = 558.0
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 133.0
+margin_top = 2.0
+margin_right = 350.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 16 )
+text = "Options"
+
+[node name="Back" type="Button" parent="Panel"]
+margin_left = 168.0
+margin_top = 240.0
+margin_right = 325.0
+margin_bottom = 284.0
+custom_fonts/font = SubResource( 18 )
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 468.0
+margin_top = 286.0
+margin_right = 611.0
+margin_bottom = 528.0
+custom_constants/separation = 42
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+pause_mode = 2
+margin_right = 143.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+text = "Play"
+
+[node name="Option" type="Button" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 143.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 11 )
+custom_styles/hover = SubResource( 12 )
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+pause_mode = 2
+margin_top = 189.0
+margin_right = 143.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 13 )
+custom_styles/hover = SubResource( 14 )
+text = "Quit"
+
+[connection signal="pressed" from="Panel/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Option" to="." method="_on_Option_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
