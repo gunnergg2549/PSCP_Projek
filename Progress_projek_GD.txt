@@ -15,6 +15,37 @@ Pause Menu: can resume, no option, can exit, no return to main menu **still bug*
 Gameplay:
 Player: can walk, can jump with physic can double jump no bug, can flip left, right
 
+1/10/68
+UI:
+Main menu: can exit, can play ,have option can adjust volume
+Audio: have main menu audio
+Pause Menu: can resume, no option, can exit, can return to main menu with no bug
+Map: Add tile
+
+Gameplay:
+Player: can walk, can jump with physic can double jump no bug, can flip left, right
+
+
+2/10/68
+UI:
+Main menu: can exit, can play ,have option can adjust volume
+Audio: have main menu audio
+Pause Menu: can resume, no option, can exit, can return to main menu with no bug
+Map: Add tile
+Heart: Have tile work in progress for coding
+
+
+Gameplay:
+Player: can walk, can jump with physic can double jump no bug, can flip left, right
+Camera: Camera Panning when player move near screen border, Camera follow player, Can set
+Enemy: 
+	Slime: Idle animation wait for other
+
+
+
+
+
+
 					
 
 				Need Sprite Very Much JUBJUB
