@@ -8,10 +8,9 @@ class PauseMenu(Control):
 	def _ready(self):
 		self.main_container = self.find_node("MarginContainer")
 		self.main_container.hide()  # ซ่อนตอนเริ่มเกม
-		self.pause_mode = Node.PAUSE_MODE_PROCESS
-		self.find_node("contiunue").connect("pressed", self, "_on_continue_pressed")
-		self.find_node("option").connect("pressed", self, "_on_option_pressed")
-		self.find_node("exit").connect("pressed", self, "_on_exit_pressed")
+		self.opt = self.find_node("Option_menu")
+		self.opt.hide()
+	
 
 
 	def _process(self, delta):
@@ -19,16 +18,21 @@ class PauseMenu(Control):
 			self.main_container.show()
 		else:
 			self.main_container.hide()
+			self.opt.hide()
 
 	def _on_continue_pressed(self):
 		self.get_tree().paused = False
 
 	def _on_option_pressed(self):
-		self.get_tree().paused = False
-		self.get_tree().change_scene("res://scene/option.tscn")
+		self.opt.show()
+		self.vbox.hide()
+
 
 	def _on_exit_pressed(self):
-		self.get_tree().quit()
+		self.get_tree().paused = False
+		self.get_tree().change_scene("res://scene/mainmenu.tscn")
+		
+
 	
 	
 	

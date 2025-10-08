@@ -1,5 +1,5 @@
 from godot import exposed, export
-from godot.bindings import Node2D, Panel, VBoxContainer
+from godot.bindings import Node2D, Panel, VBoxContainer, Control, AudioServer
 from godot import *
 
 
@@ -12,13 +12,17 @@ class mainmenu(Control):
 	
 
 	def _ready(self):
-		self.panel = self.find_node("Panel")
 		self.vbox = self.find_node("VBoxContainer")
+		self.opt = self.find_node("Option_menu")
 		self.vbox.show()
-		self.panel.hide()
+		self.opt.hide()
+		self.menu_music_bus = AudioServer.get_bus_index("Menu_Music")
+
 		
 		
 	def _on_Play_pressed(self):
+		self.get_tree().paused = False
+		AudioServer.set_bus_mute(self.menu_music_bus, True)
 		self.get_tree().change_scene("res://scene/maingame.tscn")
 	
 	def _on_Quit_pressed(self):
@@ -26,9 +30,7 @@ class mainmenu(Control):
 		print("quit")
 		
 	def _on_Option_pressed(self):
-		self.panel.show()
+		self.opt.show()
 		self.vbox.hide()
 		
-	def _on_Back_pressed(self):
-		self.vbox.show()
-		self.panel.hide()
+	
