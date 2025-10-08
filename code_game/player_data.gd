@@ -3,8 +3,9 @@ class_name player_data
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var heart: int = 4
 
+var heart:int =  4 
+var max_heart :int = 4
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

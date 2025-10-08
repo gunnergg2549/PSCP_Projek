@@ -1,18 +1,30 @@
-extends KinematicBody2D
+extends StaticBody2D
+export onready var animationPlayer = $atk/slimeanim
+onready var gui = get_parent().get_node("GUI")
+var can_damage = true
+var damage_cooldown = 1.0  # หน่วง 1 วินาที
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-export onready var animationPlayer = get_node("slimeanim")
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	$slimeanim.play("Idle")
+	animationPlayer.play("Idle")
 	animationPlayer.playback_speed = 0.75
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_atk_body_entered(body):
+	if body.name == "Player" and can_damage:
+		take_damage(body)
+				
+				
+func take_damage(player):
+	PlayerData.heart -= 1
+	PlayerData.heart = max(PlayerData.heart, 0)
+
+	# อัปเดต GUI
+	for gui in get_tree().get_nodes_in_group("GUI"):
+		gui.update_hearts()
+
+	if PlayerData.heart <= 0:
+		player.die()
+
+	can_damage = false
+	yield(get_tree().create_timer(damage_cooldown), "timeout")
+	can_damage = true
