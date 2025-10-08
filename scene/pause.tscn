@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scene/code_sys/pause.py" type="Script" id=1]
+[ext_resource path="res://scene/option.tscn" type="PackedScene" id=2]
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -31,32 +32,25 @@ custom_constants/separation = 50
 
 [node name="toppadding" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 68.0
-margin_bottom = 170.0
+margin_bottom = 205.0
 size_flags_vertical = 3
 
 [node name="continue" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 220.0
+margin_top = 255.0
 margin_right = 68.0
-margin_bottom = 240.0
+margin_bottom = 275.0
 rect_pivot_offset = Vector2( -872, 184 )
 text = "continue"
 
-[node name="option" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 290.0
-margin_right = 68.0
-margin_bottom = 310.0
-rect_pivot_offset = Vector2( -872, 184 )
-text = "option"
-
 [node name="exit" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 360.0
+margin_top = 325.0
 margin_right = 68.0
-margin_bottom = 380.0
+margin_bottom = 345.0
 rect_pivot_offset = Vector2( -872, 184 )
 text = "exit"
 
 [node name="bottompadding" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 430.0
+margin_top = 395.0
 margin_right = 68.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -67,6 +61,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 
+[node name="Option_menu" parent="." instance=ExtResource( 2 )]
+
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
