@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "bigboss",
 "language": "GDScript",
-"path": "res://scene/bigboss.gd"
+"path": "res://bigboss.gd"
 }, {
 "base": "Node",
 "class": "player_data",
