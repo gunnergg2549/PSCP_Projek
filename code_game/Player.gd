@@ -12,50 +12,48 @@ export var gravity = 10
 export var jump_force = 300
 export var max_jump = 2
 var jump_left = 0
+var is_knocked_back = false
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
 	movement(delta)
 
-
-
 # Called when the node enters the scene tree for the first time.
 	
-func  movement(delta):
-	input = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
-	
-	if input != 0:
-		if input > 0:
-			velocity.x += speed * delta
-			velocity.x = clamp(speed , 100 , speed)
+func movement(delta):
+	#  กระเด็น
+	if !is_knocked_back:
+		input = sign(Input.get_action_strength("right") - Input.get_action_strength("left"))
+		
+		if input != 0:
+			velocity.x = speed * input 
 			sprite.play("run")
-			sprite.flip_h = false
-		if input < 0:
-			velocity.x -= speed * delta
-			velocity.x = clamp(speed , 100 , -speed)
-			sprite.flip_h = true
-			sprite.play("run")
-	if input == 0:
-		velocity.x = 0
-		sprite.play("Idle")
-			
+			sprite.flip_h = (input < 0) # (input < 0) จะได้ค่า true/false
+		else:
+			velocity.x = 0
+			# ให้เล่น "Idle" ต่อเมื่ออยู่บนพื้นเท่านั้น
+			if is_on_floor(): 
+				sprite.play("Idle")
 	gravity_force()
-	move_and_slide(velocity, Vector2.UP)
-	
+
+	velocity = move_and_slide(velocity, Vector2.UP) 
+
 	if is_on_floor():
 		jump_left = max_jump
+		is_knocked_back = false
 	
-	
-	if Input.is_action_just_pressed("jump") and jump_left > 0:
+	#การกระโดด
+
+	if Input.is_action_just_pressed("jump") and jump_left > 0 and !is_knocked_back:
 		velocity.y = -jump_force
 		jump_left -= 1
-	if input == 0:
-		velocity.x = 0
+
 	if !is_on_floor():
 		if velocity.y < 0:
 			sprite.play("Jump")
-		if velocity.y > 0:
+		elif velocity.y > 0:
 			sprite.play("Jump")
+			
 	if Input.is_action_pressed("pause"):
 		get_tree().paused = true
 
@@ -65,3 +63,14 @@ func gravity_force():
 func die():
 	print("Player Dead!")
 
+func take_damage(amount):
+
+	PlayerData.heart -= 1 
+	PlayerData.heart = max(PlayerData.heart, 0)
+
+	for gui in get_tree().get_nodes_in_group("GUI"):
+		gui.update_hearts()
+
+func apply_knockback(knockback_vector: Vector2):
+	is_knocked_back = true
+	velocity = knockback_vector
