@@ -302,10 +302,10 @@ animations = [ {
 extents = Vector2( 31, 19.5 )
 
 [sub_resource type="CircleShape2D" id=57]
-radius = 175.026
+radius = 408.031
 
 [sub_resource type="RectangleShape2D" id=58]
-extents = Vector2( 57, 25 )
+extents = Vector2( 31.5, 21.5 )
 
 [node name="electSlime" type="KinematicBody2D"]
 script = ExtResource( 4 )
@@ -330,7 +330,7 @@ shape = SubResource( 57 )
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 6, -5 )
+position = Vector2( 1.5, -5.5 )
 shape = SubResource( 58 )
 
 [node name="DamageCooldownTimer" type="Timer" parent="."]
